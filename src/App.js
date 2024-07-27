@@ -6,26 +6,38 @@ import Navbar from './components/Layouts/Navbar';
 import Footer from './components/Layouts/Footer';
 import Main from './components/Main';
 import Preloader from './components/Preloader';
+import ContactUsModal from './components/ContactUsModal'; // Import the ContactUsModal
+import { ChakraProvider } from '@chakra-ui/react';
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isModalOpen, setModalOpen] = useState(false); // State to manage the modal visibility
 
   const handleLoaded = () => {
     setIsLoaded(true);
   };
 
+  const handleOpenModal = () => {
+    setModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+  };
+
   return (
-    <>
+    <ChakraProvider>
       <ResumeProvider>
         {!isLoaded && <Preloader onLoaded={handleLoaded} />}
         <div className={`main-content ${isLoaded ? 'visible' : ''}`}>
-          <Navbar />
+          <Navbar onOpenModal={handleOpenModal} /> {/* Pass the function to Navbar */}
           <Header />
           <Main />
-          <Footer />
+          <Footer onOpenModal={handleOpenModal} /> {/* Pass the function to Footer */}
+          <ContactUsModal isOpen={isModalOpen} onClose={handleCloseModal} />
         </div>
       </ResumeProvider>
-    </>
+    </ChakraProvider>
   );
 }
 

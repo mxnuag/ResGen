@@ -5,6 +5,7 @@
   "dependencies": {
     "@chakra-ui/icons": "^2.1.1",
     "@chakra-ui/react": "^1.8.9",
+    "@emailjs/browser": "^4.4.1",
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
     "@testing-library/jest-dom": "^5.16.2",

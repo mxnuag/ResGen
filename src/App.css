@@ -198,3 +198,28 @@ html {
   border-radius: 8px;
 }
 
+/* Add this CSS to your main CSS file or in a <style> tag */
+.blurred {
+  filter: blur(8px);
+  transition: filter 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  opacity: 0.7;
+}
+
+@keyframes popup {
+  0% {
+      transform: scale(0.5) rotate(10deg);
+      opacity: 0;
+  }
+  50% {
+      transform: scale(1.05) rotate(-5deg);
+      opacity: 0.8;
+  }
+  100% {
+      transform: scale(1) rotate(0deg);
+      opacity: 1;
+  }
+}
+
+.popup {
+  animation: popup 0.5s ease-in-out;
+}
