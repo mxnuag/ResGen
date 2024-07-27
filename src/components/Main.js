@@ -15,7 +15,7 @@ import { useResume } from '../Context';
 import { MdOutlineFileDownload } from 'react-icons/md';
 import 'aos/dist/aos.css'; // Import AOS styles
 import AOS from 'aos'; // Import AOS
-import '../App.css'
+import '../App.css'; // Ensure this path is correct
 
 const Main = () => {
   const { printElem } = useResume();
@@ -34,7 +34,7 @@ const Main = () => {
 
   return (
     <Container
-      bg="#1D1D1D"
+      className="gradient-background" // Apply gradient background
       minW="full"
       py={10}
       id="builder"
@@ -59,7 +59,12 @@ const Main = () => {
         </Heading>
       </Box>
 
-      <Container maxW="7xl" px={8} my={3}>
+      <Container
+        className="inner-gradient-background"
+        maxW="7xl"
+        px={8}
+        my={3}
+      >
         <Stack
           justifyContent="space-between"
           direction={{ base: 'column', sm: 'row' }}
