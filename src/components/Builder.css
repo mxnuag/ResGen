@@ -1,0 +1,35 @@
+/* Builder.css */
+.builder-container {
+    background: rgba(0, 0, 0, 0.8); /* Dark, semi-transparent background */
+    padding: 20px; /* Space around the content */
+    border-radius: 12px; /* Rounded corners for a modern look */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+  }
+  
+  .tab-list {
+    border-bottom: 2px solid #e3405f; /* Accent color border */
+  }
+  
+  .tab {
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions for hover effects */
+  }
+  
+  .tab:hover {
+    background-color: #2d2d2d; /* Darker background on hover */
+    color: #e3405f; /* Accent color for text on hover */
+  }
+  
+  .tab-panel {
+    animation: fadeIn 0.5s ease-in-out; /* Fade-in animation for content panels */
+  }
+  
+  /* Fade-in animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  

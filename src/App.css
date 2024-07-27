@@ -67,3 +67,123 @@ html {
     transform: scale(1);
   }
 }
+
+@keyframes scrollEffect {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+/* Keyframes for pop-up transition */
+@keyframes popUp {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Keyframes for scroll effect */
+@keyframes scrollEffect {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+/* Keyframes for pop-up transition */
+@keyframes popUp {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Heading Container Styling */
+.heading-container {
+  position: relative;
+  overflow: hidden;
+  padding: 20px;
+  border-radius: 10px;
+  background: #1d1d1d; /* Background color for the container */
+}
+
+/* Animated Background */
+.heading-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background: linear-gradient(45deg, #ff6b6b, #f06595, #a4508b, #5f2a91); */
+  background-size: 200% 200%;
+  animation: scrollEffect 15s ease infinite;
+  z-index: 1; /* Ensure it stays behind the text */
+}
+
+/* Heading Text Styling */
+.heading-text {
+  background: linear-gradient(45deg, #ff6b6b, #f06595);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 3rem;
+  font-weight: bold;
+  padding: 1rem 2rem; /* Increased padding for better visual balance */
+  border-radius: 10px;
+  position: relative;
+  animation: popUp 1s ease-out;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  z-index: 1; /* Ensure it stays on top of the background */
+}
+
+/* Text Highlight Effect */
+.heading-text::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 50%);
+  opacity: 0.6; /* Adjusted opacity for better visibility */
+  pointer-events: none;
+  z-index: 2; /* Ensure it's above the text but below the text shadow */
+}
+/* Custom CSS for AOS animations */
+[data-aos="fade-up"] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s, transform 1s;
+}
+
+[data-aos="fade-up"].aos-animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+

@@ -5,10 +5,12 @@ import {
   Input,
   Stack,
   Button,
+  Box,
 } from "@chakra-ui/react";
 import React from "react";
 import { useResume } from "../../Context";
 import ImageUpload from "../ImageUploadButton/ImageUpload.component";
+import "../../App.css";
 
 const About = () => {
   const { about, setAbout } = useResume();
@@ -19,7 +21,7 @@ const About = () => {
   };
 
   return (
-    <>
+    <Box className="about-form-container">
       <Stack spacing={4} mb={2}>
         {about.picture ? (
           <Button
@@ -110,7 +112,7 @@ const About = () => {
           </FormControl>
         </HStack>
       </Stack>
-    </>
+    </Box>
   );
 };
 
