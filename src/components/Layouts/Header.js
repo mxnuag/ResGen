@@ -9,13 +9,14 @@ import {
     Box,
     Container,
 } from '@chakra-ui/react';
-import { ReactTyped } from 'react-typed'; // Correctly import the named export
+import { ReactTyped } from 'react-typed';
 import hero from '../../images/manOnTable.svg';
+import '../../App.css'; // Ensure this import path is correct
 
 const Header = () => {
     return (
         <>
-            <Container maxW='8xl' as='main' style={{ background: "#1D1D1D" }}>
+            <Container maxW='8xl' as='main' className="animated-background">
                 <Stack
                     py={{ base: 8, md: 20 }}
                     spacing={{ base: 4, md: 10 }}
@@ -45,7 +46,7 @@ const Header = () => {
                             />
                         </Heading>
 
-                        <Text color={'white'} lineHeight={1.7} style={{ fontFamily: 'Poppins' }}>
+                        <Text color={'white'} lineHeight={1.7} fontSize={{ base: 'lg', md: 'xl' }} style={{ fontFamily: 'Poppins'}}>
                             Forget spending hours formatting your resume, or choosing complimentary fonts for your cover letter. Creating a resume online with ResGen's free resume builder will give you a sleek and attractive resume, without the fuss.
                         </Text>
                         <Stack
@@ -59,6 +60,13 @@ const Header = () => {
                                 size={'lg'}
                                 px={6}
                                 colorScheme={'pink'}
+                                sx={{
+                                    animation: 'pulse 2s infinite',
+                                    transition: 'transform 0.2s',
+                                    _hover: {
+                                        transform: 'scale(1.1)',
+                                    },
+                                }}
                             >
                                 Build Resume
                             </Button>
