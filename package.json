@@ -18,6 +18,7 @@
     "react-icons": "^4.3.1",
     "react-scripts": "5.0.0",
     "react-to-print": "^2.14.4",
+    "react-typed": "^2.0.12",
     "uuid": "^8.3.2",
     "uuidv4": "^6.2.12",
     "web-vitals": "^2.1.4",
