@@ -1,0 +1,72 @@
+/* Preloader.css */
+
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #000000, #434343); /* Dark gradient background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  z-index: 9999;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.preloader.inactive {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* To ensure sidebar is hidden, you need to add an additional class to hide sidebar */
+.hide-sidebar .sidebar {
+  display: none;
+}
+
+.box-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none; /* Prevent interaction with the boxes */
+}
+
+.box {
+  width: 50px;
+  height: 50px;
+  background: #333;
+  position: absolute;
+  animation: jumpAround 4s linear infinite;
+}
+
+@keyframes jumpAround {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(50vw, -50vh); }
+  50% { transform: translate(-50vw, -50vh); }
+  75% { transform: translate(-50vw, 50vh); }
+  100% { transform: translate(50vw, 50vh); }
+}
+
+.text {
+  position: relative;
+  z-index: 10; /* Ensure text appears above the boxes */
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  opacity: 0;
+  animation: popUp 3.5s ease-in-out forwards;
+}
+
+@keyframes popUp {
+  0% { opacity: 0; transform: scale(0.5); }
+  50% { opacity: 1; transform: scale(1.5); }
+  100% { opacity: 0; transform: scale(1); }
+}
