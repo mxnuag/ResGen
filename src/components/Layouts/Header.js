@@ -31,10 +31,10 @@ const Header = () => {
                         >
                             <ReactTyped
                                 strings={[
-                                    'Welcome to ResGen!',
+                                    'Your career journey starts here..',
                                     'ResGen: Your resume expert!',
                                     'ResGen: Build. Design. Succeed..',
-                                    'Your career journey starts here..',
+                                    'Welcome to ResGen!',
                                     'Get hired faster with ResGen!',
                                     'Creating a resume is now simple!',
                                     'Craft a standout resume effortlessly..',
