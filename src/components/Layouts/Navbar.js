@@ -1,10 +1,9 @@
 // src/components/Layouts/Navbar.jsx
 import React, { useState, useEffect } from 'react';
-import { Stack, Flex, Heading, Spacer, HStack, Button, useDisclosure, Box } from "@chakra-ui/react";
+import { Stack, Flex, Heading, Spacer, HStack, Button, Box } from "@chakra-ui/react";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, signInWithGoogle, signOutFromGoogle } from '../../Firebase';
 import { toast } from 'react-toastify';
-import ContactUsModal from '../ContactUsModal';
 
 const Navbar = ({ onOpenModal }) => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -42,6 +41,20 @@ const Navbar = ({ onOpenModal }) => {
             });
         }
     }, [user, loading]);
+
+    const handleSignOut = () => {
+        signOutFromGoogle().then(() => {
+            toast("Leaving so soon? We'll miss you!", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        });
+    };
 
     return (
         <>
@@ -90,7 +103,7 @@ const Navbar = ({ onOpenModal }) => {
                         </Button>
                         {user ? (
                             <Button 
-                                onClick={signOutFromGoogle} 
+                                onClick={handleSignOut} 
                                 colorScheme="teal"
                                 _hover={{
                                     transform: 'scale(1.1)',

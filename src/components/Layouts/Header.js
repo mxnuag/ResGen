@@ -1,3 +1,4 @@
+// src/components/Layouts/Header.jsx
 import React from 'react';
 import {
     Text,
@@ -11,9 +12,30 @@ import {
 } from '@chakra-ui/react';
 import { ReactTyped } from 'react-typed';
 import hero from '../../images/manOnTable.svg';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../../Firebase';
+import { toast } from 'react-toastify';
 import '../../App.css'; // Ensure this import path is correct
 
 const Header = () => {
+    const [user] = useAuthState(auth);
+
+    const handleBuildResumeClick = () => {
+        if (!user) {
+            toast.error("Oops! You are not signed in.", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        } else {
+            window.location.href = '#builder';
+        }
+    };
+
     return (
         <>
             <Container maxW='8xl' as='main' className="animated-background">
@@ -54,12 +76,11 @@ const Header = () => {
                             direction={{ base: 'column', sm: 'row' }}
                         >
                             <Button
-                                as={'a'}
-                                href={'#builder'}
                                 rounded={'md'}
                                 size={'lg'}
                                 px={6}
                                 colorScheme={'pink'}
+                                onClick={handleBuildResumeClick}
                                 sx={{
                                     animation: 'pulse 2s infinite',
                                     transition: 'transform 0.2s',
