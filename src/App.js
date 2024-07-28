@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+// src/App.js
+import React, { useState, useEffect } from 'react';
 import { ResumeProvider } from './Context';
 import './App.css';
 import Header from './components/Layouts/Header';
@@ -8,6 +9,8 @@ import Main from './components/Main';
 import Preloader from './components/Preloader';
 import ContactUsModal from './components/ContactUsModal'; // Import the ContactUsModal
 import { ChakraProvider } from '@chakra-ui/react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -36,6 +39,7 @@ function App() {
           <Footer onOpenModal={handleOpenModal} /> {/* Pass the function to Footer */}
           <ContactUsModal isOpen={isModalOpen} onClose={handleCloseModal} />
         </div>
+        <ToastContainer />
       </ResumeProvider>
     </ChakraProvider>
   );

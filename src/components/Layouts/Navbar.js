@@ -1,16 +1,18 @@
+// src/components/Layouts/Navbar.jsx
 import React, { useState, useEffect } from 'react';
 import { Stack, Flex, Heading, Spacer, HStack, Button, useDisclosure, Box } from "@chakra-ui/react";
-import { FaInstagram, FaLinkedin, FaGithub } from 'react-icons/fa';
-import ContactUsModal from '../ContactUsModal'; // Ensure this import is correct
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth, signInWithGoogle, signOutFromGoogle } from '../../Firebase';
+import { toast } from 'react-toastify';
+import ContactUsModal from '../ContactUsModal';
 
-const Navbar = () => {
+const Navbar = ({ onOpenModal }) => {
     const [isScrolled, setIsScrolled] = useState(false);
+    const [user, loading] = useAuthState(auth);
 
     const handleTextClick = () => {
-        window.location.reload(); // Reload the page when text is clicked
+        window.location.reload();
     };
-
-    const { isOpen, onOpen, onClose } = useDisclosure(); // Chakra UI hook for modal
 
     useEffect(() => {
         const handleScroll = () => {
@@ -26,6 +28,20 @@ const Navbar = () => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
+
+    useEffect(() => {
+        if (user && !loading) {
+            toast(`Welcome ${user.displayName || user.email}!`, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        }
+    }, [user, loading]);
 
     return (
         <>
@@ -50,35 +66,57 @@ const Navbar = () => {
                         size='lg' 
                         fontWeight={'thin'} 
                         color='#e3405f' 
-                        style={{ fontFamily: "Arial, sans-serif" }} // Change font here
+                        style={{ fontFamily: "Arial, sans-serif" }}
                         cursor="pointer"
                         _hover={{
-                            transform: 'scale(1.1)', // Increase size on hover
-                            transition: 'transform 0.3s ease-in-out' // Smooth transition
+                            transform: 'scale(1.1)',
+                            transition: 'transform 0.3s ease-in-out'
                         }}
-                        onClick={handleTextClick} // Reload page on click
+                        onClick={handleTextClick}
                     >
                         ResGen
                     </Heading>
                     <Spacer></Spacer>
                     <HStack spacing={10} mr={{ base: 0, sm: 8 }} as='nav' style={{ fontFamily: 'Poppins' }}>
                         <Button 
-                            onClick={onOpen} 
+                            onClick={onOpenModal} 
                             colorScheme="pink" 
                             _hover={{ 
-                                transform: 'scale(1.1)', // Increase size on hover
-                                transition: 'transform 0.3s ease-in-out' // Smooth transition
+                                transform: 'scale(1.1)',
+                                transition: 'transform 0.3s ease-in-out'
                             }}
                         >
                             Contact Us
                         </Button>
+                        {user ? (
+                            <Button 
+                                onClick={signOutFromGoogle} 
+                                colorScheme="teal"
+                                _hover={{
+                                    transform: 'scale(1.1)',
+                                    transition: 'transform 0.3s ease-in-out'
+                                }}
+                            >
+                                Sign Out
+                            </Button>
+                        ) : (
+                            <Button 
+                                onClick={signInWithGoogle} 
+                                colorScheme="blue"
+                                _hover={{
+                                    transform: 'scale(1.1)',
+                                    transition: 'transform 0.3s ease-in-out'
+                                }}
+                            >
+                                Sign In 
+                            </Button>
+                        )}
                     </HStack>
                 </Flex>
             </Stack>
             <Box id="main-content" pt="80px">
                 {/* Your main content here */}
             </Box>
-            <ContactUsModal isOpen={isOpen} onClose={onClose} />
         </>
     );
 };
