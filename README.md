@@ -17,6 +17,8 @@ Download Option: Capability to download the finished resume in multiple formats,
 
 Logout Message: A friendly or humorous message displayed upon logout, such as "Leaving so soon!" to enhance user experience.
 
+WhatsApp Chat Support: A built-in feature allowing users to initiate a chat on WhatsApp for support or inquiries directly from the application.
+
 
 Technologies Used:
 
