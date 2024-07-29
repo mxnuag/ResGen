@@ -31,3 +31,6 @@ Firebase: Authentication provider for secure user sign-in and sign-out.
 
 Deployment:
 Vercel: Hosting platform for deploying and scaling the web application.
+
+![image](https://github.com/user-attachments/assets/ee2232d6-ead4-4b1b-9398-8c8db2e5a174)
+
