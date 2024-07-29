@@ -35,7 +35,7 @@ import {
         <Container centerContent>
           <VStack spacing={5}>
             <Stack fontWeight="medium" textAlign="center">
-              <Text color="#000000"fontSize="lg">ResGen | &copy; 2022. All rights reserved.</Text>
+              <Text color="#000000"fontSize="lg">ResGen | &copy; 2024. All rights reserved.</Text>
               <Text color="#000000"fontSize="sm">Your go-to resume generator for creating professional resumes effortlessly.</Text>
             </Stack>
             <HStack spacing={5}>

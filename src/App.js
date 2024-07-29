@@ -8,6 +8,7 @@ import Footer from './components/Layouts/Footer';
 import Main from './components/Main';
 import Preloader from './components/Preloader';
 import ContactUsModal from './components/ContactUsModal'; // Import the ContactUsModal
+import WhatsAppChat from './components/Whatsapp/WhatsAppChat'; // Import the WhatsAppChat component
 import { ChakraProvider } from '@chakra-ui/react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -39,6 +40,7 @@ function App() {
           <Main />
           <Footer onOpenModal={handleOpenModal} /> {/* Pass the function to Footer */}
           <ContactUsModal isOpen={isModalOpen} onClose={handleCloseModal} />
+          <WhatsAppChat /> {/* Add WhatsAppChat component */}
         </div>
       </ResumeProvider>
     </ChakraProvider>
